@@ -70,4 +70,5 @@ RESTful APi设计
    jpa:
      hibernate:
        ddl-auto: create // dll-auto 有5中方法,常用的有update,create,
-     show-sql: true```
+     show-sql: true
+```
