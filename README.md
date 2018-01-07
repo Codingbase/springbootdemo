@@ -88,4 +88,15 @@ RESTful APi设计
  
  第一 
  1. 拦截所有未满18岁的
- 
+ ```java
+        /*
+       * 当一个对象属性特别多的时候,参数传一个对象,从对象里获取属性
+         */
+        @PostMapping(value ="/girls")
+         public Girl girlAdd(Girl girl){
+    //        给函数传一个对象,从对象里获取属性
+            girl.setCupSize(girl.getCupSize());
+            girl.setAge(girl.getAge());
+            return girlRepository.save(girl);
+        }
+```

@@ -33,16 +33,13 @@ public class GirlController {
      * POST请求传参数,RequestParam 添加参数的方法
      * 需要返回一个对象所以定义一个public Girl对象
      * 返回一个对象
-     * @param cupSize
-     * @param aga
-     * @return
+     * 当一个对象属性特别多的时候,参数传一个对象,从对象里获取属性
      */
     @PostMapping(value ="/girls")
-    public Girl girlAdd(@RequestParam("cupSize")String cupSize,
-                          @RequestParam("age") Integer aga){
-        Girl girl = new Girl();
-        girl.setCupSize(cupSize);
-        girl.setAge(aga);
+    public Girl girlAdd(Girl girl){
+//        给函数传一个对象,从对象里获取属性
+        girl.setCupSize(girl.getCupSize());
+        girl.setAge(girl.getAge());
         return girlRepository.save(girl);
     }
 
