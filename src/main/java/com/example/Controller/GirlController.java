@@ -1,11 +1,17 @@
 package com.example.Controller;
 
 import com.example.Entity.Girl;
+import com.example.Entity.Result;
 import com.example.Interface.GirlRepository;
 import com.example.service.GirlService;
+import com.example.utlis.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -13,6 +19,8 @@ import java.util.List;
  */
 @RestController
 public class GirlController {
+
+    private final static Logger logger = LoggerFactory.getLogger(GirlController.class);
 //    autowired自动装配
     @Autowired
     private GirlRepository girlRepository;
@@ -32,15 +40,23 @@ public class GirlController {
     /**
      * POST请求传参数,RequestParam 添加参数的方法
      * 需要返回一个对象所以定义一个public Girl对象
-     * 返回一个对象
+     * 返回一个对象 Girl
      * 当一个对象属性特别多的时候,参数传一个对象,从对象里获取属性
+     * @Valid 表单验证,后面有参数BindingResult bindingResult,然后做判断
      */
+
     @PostMapping(value ="/girls")
-    public Girl girlAdd(Girl girl){
+    public Result girlAdd(@Valid Girl girl, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());
+        }
+
 //        给函数传一个对象,从对象里获取属性
         girl.setCupSize(girl.getCupSize());
         girl.setAge(girl.getAge());
-        return girlRepository.save(girl);
+        girl.setMoney(girl.getMoney());
+        Result result = new Result();
+        return ResultUtil.success(girlRepository.save(girl));
     }
 
     //查询一个女生id findOne 方法 查询一个id使用PathVariable方法
@@ -72,9 +88,15 @@ public class GirlController {
         return girlRepository.findByAge(age);
     }
 
-
+    // 插入两条数据 如果一条插入失败另一条也不插入
     @PostMapping(value ="/girls/two")
     public void girlTwo() {
         girlService.insetrTwo();
     }
+
+    @GetMapping(value = "girls/getAge/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws Exception {
+        girlService.getAge(id);
+    }
+
 }

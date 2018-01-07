@@ -99,4 +99,84 @@ RESTful APi设计
             girl.setAge(girl.getAge());
             return girlRepository.save(girl);
         }
+        
+首先把单个的属性换成对象,当有很多属性的时候只需要往对象里面添加
 ```
+```java
+//首先把单个的属性换成对象,当有很多属性的时候只需要往对象里面添加  
+//@Valid 表单验证,后面有参数BindingResult bindingResult,然后做判断
+//Controller 类
+ public Girl girlAdd(@Valid Girl girl, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+        }
+}
+//Entity实体类 在需要验证的属性前面添加@Min标注,并给出值
+public class Girl {
+    @Min(value = 18, message = "未成年禁止入内")
+    private Integer age;
+}
+```
+2. AOP统一处理请求日志
+AOP是一种变成范式,与语言无关,是一种程序设计思想  
+面向切面(AOP) Aspect Oriented programming (.)  
+面向对象(OOP) Object Oriented Programming (Java C++ C#)  
+面向过程(POP) Procedure Oriented Programming(C语言)  
+面向对象到面向过程 换个角度看世界,换个姿势处理问题  
+AOP可以统一实现一些经常调用的通用方法
+- 使用AOP第一步添加依赖  
+- 第二部 添加处理文件,创建Aspect类,引入@Aspect @Component标注 
+-  第三部 实现具体代码
+  ```java
+    //   使用spring boot 自带的log方法import org.slf4j.Logger;
+        private final static Logger logger = LoggerFactory.getLogger(HTTPAspect.class);
+    
+        // 在Pointcut中添加要拦截的方法,如果要拦截整个类直接后面跟上*就可以
+        @Pointcut(" execution(public * com.example.Controller.GirlController.girlList(..))")
+        public void log() {
+        }
+    //    Before是在执行前执行,调用log()方法
+        @Before("log()")
+        public void doBefore() {
+            logger.info("11111");
+        }
+        // After是在执行后处理的
+        @After("log()")
+        public void doAfter(){
+            logger.info("2222222222");
+        }
+```
+使用统一日志格式 选择springboot自带的日志工具类org.slf4j.Logger;  
+ `private final static Logger logger = LoggerFactory.getLogger(GirlController.class);`
+ 
+ 获取httprequest的数据和response的数据方法
+ ````java
+        @Before("log()")
+        public void doBefore(JoinPoint joinPoint) {
+    //        记录请求的 url method IP 类方法 参数
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            HttpServletRequest request = attributes.getRequest();
+            //获取url
+            logger.info("url={}", request.getRequestURI());
+            //获取method
+            logger.info("method={}", request.getMethod());
+            //获取ip
+            logger.info("IP={}", request.getRemoteAddr());
+            //获取类方法
+            logger.info("Class_method={}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+            //获取参数
+            logger.info("args={}", joinPoint.getArgs());
+        }
+        // After是在执行后处理的,
+        @After("log()")
+        public void doAfter(){
+            logger.info("2222222222");
+        }
+    //    获取返回的内容,传一个object对象.现在实体中添加一个toString方法 ,在把对象调用toString方法
+        @AfterReturning(returning = "object", pointcut = "log()")
+        public void doAfterReturning(Object object) {
+            logger.info("response={}", object.toString());
+        }
+ ```
+ 统一异常处理,返回格式要统一
+ 
