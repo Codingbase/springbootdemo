@@ -1,0 +1,25 @@
+# yml 配置中冒号后面有个空格,是语法的规定.yml可以配置多个不同环境,通过主的配置文件来执行不同生产环境
+# yml 配置多个生成环境,通过jar方式启动是可以跟参数执行
+# java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
+#server:
+#    port: 8081
+#    context-path: /girl
+# 使用配置文件的配置变量
+# cupSize: B
+# age: 27
+# content: "cupSize: ${cupSize},age:${age}"
+#girl:
+#    cupSize: B
+#    age: 18
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

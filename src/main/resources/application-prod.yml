@@ -1,0 +1,11 @@
+# yml 配置中冒号后面有个空格,是语法的规定.yml可以配置多个不同环境
+server:
+    port: 8080
+    context-path: /girl
+# 使用配置文件的配置变量
+# cupSize: B
+# age: 27
+# content: "cupSize: ${cupSize},age:${age}"
+girl:
+    cupSize: F
+    age: 20
