@@ -1,13 +1,13 @@
-
+#### mvn执行
 mvn install 执行后生成jar包  
 java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 
-# 属性配置
+#### 属性配置
 @Value 来实现配置文件的注入  
 @Component 来实现配置文件的分组  
 @ConfigurationProperties来实现配置文件的分组 
  
-# Controller的使用  
+#### Controller的使用  
 
 @Controller 处理http请求 ,使用模板时可以使用 
 @RestController Spring4之后新加的注解,原来返回JSON需要@ResponseBody配置@Controller,RestController等同于@Controller+@ResponseBody  
@@ -21,7 +21,7 @@ java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 类配置url `@RequestMapping(value = "/base")`  
 方法上配置url`@RequestMapping(value ={"/hello","/hi"}, method = RequestMethod.GET)` 
 
-# 如何处理url中的参数
+#### 如何处理url中的参数
 @PathVariable 获取url中的数据  
 ```
 //  如果想配置多个url来访问这个页面,可以写成一个集合,@RequestMapping 可以给整个类设置一个url
@@ -59,7 +59,7 @@ Spring-Data-Jpa(JPA)定义了一系列对象持久化的标准,目前实现这�
 RESTful APi设计
 请求类型 请求路径 功能
 
-`spring:
+```spring:
    profiles:
      active: dev
    datasource:
@@ -70,4 +70,4 @@ RESTful APi设计
    jpa:
      hibernate:
        ddl-auto: create // dll-auto 有5中方法,常用的有update,create,
-     show-sql: true`
+     show-sql: true```
