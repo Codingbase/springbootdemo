@@ -1,12 +1,14 @@
 #### mvn执行
 mvn install 执行后生成jar包  
 java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
-
+1. springboot 安装  通过idea自动生成springboot项目
+使用spring boot jpa  mysql
+2. spring boot 配置
 #### 属性配置
 @Value 来实现配置文件的注入  
 @Component 来实现配置文件的分组  
 @ConfigurationProperties来实现配置文件的分组 
- 
+3. spring boot使用
 #### Controller的使用  
 
 @Controller 处理http请求 ,使用模板时可以使用 
@@ -72,3 +74,17 @@ RESTful APi设计
        ddl-auto: create // dll-auto 有5中方法,常用的有update,create,
      show-sql: true
 ```
+#### @Transactional 事物处理写在service中
+* Service控制
+* @Transactional 事物控制,如果两天数据有一条失败.另一条也不插入
+* 只有查询的时候不需要加事物
+ 
+ 
+ #### web进阶
+ 1. 使用@Valid表单验证,防填写错误,防黑客
+ 2. 使用AOP处理请求 , 非常强大 非常实用
+ 3. 统一异常处理
+ 4. 单元测试 有责任心的开发都应该写单元测试
+ 
+ 1. 拦截所有未满18岁的
+ 

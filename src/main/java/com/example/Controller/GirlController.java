@@ -2,6 +2,7 @@ package com.example.Controller;
 
 import com.example.Entity.Girl;
 import com.example.Interface.GirlRepository;
+import com.example.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,9 @@ public class GirlController {
 //    autowired自动装配
     @Autowired
     private GirlRepository girlRepository;
+
+    @Autowired
+    private GirlService girlService;
 
     /**
      * 查询女生列表
@@ -69,5 +73,11 @@ public class GirlController {
     @GetMapping(value = "/girls/age/{age}")
     public List<Girl> findByAge(@PathVariable("age") Integer age) {
         return girlRepository.findByAge(age);
+    }
+
+
+    @PostMapping(value ="/girls/two")
+    public void girlTwo() {
+        girlService.insetrTwo();
     }
 }
