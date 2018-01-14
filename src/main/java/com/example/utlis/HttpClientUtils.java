@@ -1,14 +1,5 @@
-package com.example.service;
+package com.example.utlis;
 
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -23,6 +14,15 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -90,7 +90,7 @@ public class HttpClientUtils {
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String json = EntityUtils.toString(response.getEntity(), "utf-8");
 				log.debug("Payload : {}", json);
-				result = JsonUtils.toBean(json, javaType);
+//				result = JsonUtils.toBean(json, javaType);
 			}
 		} catch (Exception e) {
 			log.error("HttpClient has exception! message: {}", e.getMessage(), e);
@@ -149,7 +149,7 @@ public class HttpClientUtils {
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String json = EntityUtils.toString(response.getEntity(), "utf-8");
 				log.debug("Payload : {}", json);
-				result = JsonUtils.toBean(json, javaType);
+//				result = JsonUtils.toBean(json, javaType);
 			}
 		} catch (Exception e) {
 			log.error("HttpClient has exception! message: {}", e.getMessage(), e);

@@ -54,7 +54,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-<<<<<<< HEAD
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
@@ -85,14 +85,31 @@
 			<artifactId>httpasyncclient</artifactId>
 			<version>4.1.3</version>
 		</dependency>
-	</dependencies>
-=======
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.44</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-started-aop</artifactId>
 		</dependency>
+
+		<!-- spring boot devtools 依赖包. 热部署-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<scope>true</scope>
+		</dependency>
+
 	</dependencies>
->>>>>>> 9522d57e96664c78e485eab53ba735475fd50f34
+
+
 
 	<build>
 		<plugins>
@@ -100,7 +117,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!--热部署插件-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- 如果没有该项配置，devtools不会起作用，即应用不会restart -->
+					<fork>true</fork>
+				</configuration>
+			</plugin>
 		</plugins>
+
+
 	</build>
 
 

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -47,7 +46,9 @@ public class GirlController {
      */
 
     @PostMapping(value ="/girls")
-    public Result girlAdd(@Valid Girl girl, BindingResult bindingResult){
+    @ResponseBody
+    public Result girlAdd(@RequestBody  Girl girl, BindingResult bindingResult){
+
         if (bindingResult.hasErrors()) {
             return ResultUtil.error(1,bindingResult.getFieldError().getDefaultMessage());
         }

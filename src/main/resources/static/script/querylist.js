@@ -1,5 +1,5 @@
 $.ajax({
-    //请求方式为get
+    //请求方式为get  //
     type: "GET",
     //json文件位置
     url: "http://127.0.0.1:8081/girl/girls",

@@ -12,4 +12,8 @@ public class HelloControllerIndex {
     public String Hi() {
         return "index";
     }
+    @RequestMapping(value="/req",method = RequestMethod.GET)
+    public String req() {
+        return "reqtest";
+    }
 }
