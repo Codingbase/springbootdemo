@@ -29,4 +29,16 @@ public class GirlService {
         girlB.setAge(25);
         girlRepository.save(girlB);
     }
+// 添加逻辑判断年龄并抛出异常
+    public void getAge(Integer id) throws Exception{
+        Girl girl = girlRepository.findOne(id);
+        Integer age = girl.getAge();
+        if (age < 10) {
+            throw new Exception("你还在上小学吧!");
+        } else if (age > 10 && age < 16) {
+            throw new Exception("你可能上初中");
+        } else if (age > 16) {
+            throw new Exception("你可能上大学了!");
+        }
+    }
 }
