@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Created by shen on 2018/1/4.
  */
+@CrossOrigin
 @RestController
 public class GirlController {
 //    autowired自动装配
