@@ -21,7 +21,7 @@ public class Girl {
     @GeneratedValue
     private Integer id;
 
-    private String cupSize;
+    private String api;
     // 定义Min表示有个参数参考
     @Min(value = 18, message = "未成年禁止入内")
     private Integer age;
@@ -40,8 +40,8 @@ public class Girl {
         return id;
     }
 
-    public String getCupSize() {
-        return cupSize;
+    public String getApi() {
+        return api;
     }
 
     public Integer getAge() {
@@ -52,8 +52,8 @@ public class Girl {
         this.id = id;
     }
 
-    public void setCupSize(String cupSize) {
-        this.cupSize = cupSize;
+    public void setApi(String api) {
+        this.api = api;
     }
 
     public void setAge(Integer age) {
@@ -67,7 +67,7 @@ public class Girl {
     public String toString() {
         return "Girl{" +
                 "id=" + id +
-                ", cupSize='" + cupSize + '\'' +
+                ", api='" + api + '\'' +
                 ", age=" + age +
                 ", money=" + money +
                 '}';

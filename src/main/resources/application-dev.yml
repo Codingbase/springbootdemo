@@ -3,9 +3,9 @@ server:
     port: 8081
     context-path: /girl
 # 使用配置文件的配置变量
-# cupSize: B
+# api: B
 # age: 27
 # content: "cupSize: ${cupSize},age:${age}"
 girl:
-    cupSize: B
+    api: B
     age: 18

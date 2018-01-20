@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Document</title>
-    <script type="text/javascript" src="script/jquery2.1.4.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
 </head>
 <body>
-
+<script type="text/javascript" src="scripts/jquery2.1.4.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/querylist.js"></script>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="http://localhost:8081/girl/page#">主页～</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">api test</a></li>
+            <li><a href="#">报告</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    下拉菜单
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">我是谁呢？</a></li>
+                    <li><a href="#">我也不知道</a></li>
+                    <li><a href="#">你是谁呢？</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="center-block" style="width:200px">
 <form name="input"  method="get">
     <p>Get请求方法</p>
     First url: <input type="text" name="url" id="url"/>
@@ -19,9 +49,10 @@
 
 </form>
 
-<script type="text/javascript" src="script/requestMethod.js"></script>
+<script type="text/javascript" src="scripts/requestMethod.js"></script>
 
 
 <ul id="show"></ul>
+</div>
 </body>
 </html>

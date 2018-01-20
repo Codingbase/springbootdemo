@@ -54,7 +54,7 @@ public class GirlController {
         }
 
 //        给函数传一个对象,从对象里获取属性
-        girl.setCupSize(girl.getCupSize());
+        girl.setApi(girl.getApi());
         girl.setAge(girl.getAge());
         girl.setMoney(girl.getMoney());
         Result result = new Result();
@@ -70,12 +70,14 @@ public class GirlController {
     // 更新
     @PutMapping(value = "/girls/{id}")
     public Girl girlUpdate(@PathVariable("id") Integer id,
-                           @RequestParam("cupSize") String cupSize,
-                           @RequestParam("age") Integer age) {
+                           @RequestParam("api") String api,
+                           @RequestParam("age") Integer age,
+                           @RequestParam("money") Double money) {
         Girl girl = new Girl();
         girl.setAge(age);
-        girl.setCupSize(cupSize);
+        girl.setApi(api);
         girl.setId(id);
+        girl.setMoney(money);
         return girlRepository.save(girl);
     }
 

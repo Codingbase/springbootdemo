@@ -20,12 +20,12 @@ public class GirlService {
     @Transactional
     public void insetrTwo() {
         Girl girlA = new Girl();
-        girlA.setCupSize("C");
+        girlA.setApi("C");
         girlA.setAge(20);
         girlRepository.save(girlA);
 
         Girl girlB = new Girl();
-        girlB.setCupSize("A");
+        girlB.setApi("A");
         girlB.setAge(25);
         girlRepository.save(girlB);
     }

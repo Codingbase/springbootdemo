@@ -9,20 +9,20 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "girl")
 public class GirlProperties {
-    private String cupSize;
+    private String api;
 
     private Integer age;
 
-    public String getCupSize() {
-        return cupSize;
+    public String getApi() {
+        return api;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void setCupSize(String cupSize) {
-        this.cupSize = cupSize;
+    public void setApi(String api) {
+        this.api = api;
     }
 
     public void setAge(int age) {

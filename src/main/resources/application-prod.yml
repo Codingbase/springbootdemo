@@ -7,5 +7,5 @@ server:
 # age: 27
 # content: "cupSize: ${cupSize},age:${age}"
 girl:
-    cupSize: F
+    api: F
     age: 20
