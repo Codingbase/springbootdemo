@@ -1,17 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Title</title>
-    <script type="text/javascript" src="script/jquery2.1.4.js"></script>
-    <script type="text/javascript" src="script/querylist.js"></script>
+    <title>spring boot web</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+
 </head>
 <body>
-<h1> hello Spring boot!</h1>
-<h2>Hello world!</h2>
-<h3>Hello JAVA!</h3>
-<a href="reqtest.html">请求方法</a>
-<div>
-<table id="test"></table>
+<script type="text/javascript" src="scripts/jquery2.1.4.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/querylist.js"></script>
+
+<!--bootstrap table-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<!--导航栏-->
+<nav class="navbar navbar-inverse">
+<div class="container">
+    <div class="navbar-inner" style="background-image: -webkit-linear-gradient(top, rgb(43,184,170),rgb(43,184,170));">
+        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span>Home</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <!--添加图标，在导航中添加一个span class指定图标名称-->
+            <li ><a href="http://localhost:8081/girl/req" style="width: auto"><span class="glyphicon glyphicon-cloud"></span>api test</a></li>
+            <li><a href="#" style="width: auto"><span class="glyphicon glyphicon-folder-open"></span> 报告</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width: auto"><span class="glyphicon glyphicon-align-justify"></span>
+                    下拉菜单
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">我是谁呢？</a></li>
+                    <li><a href="#">我也不知道</a></li>
+                    <li><a href="#">你是谁呢？</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--导航栏右侧-->
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar/">Default</a></li>
+        <li><a href="../navbar-static-top/">Static top</a></li>
+        <li class="active"><a href="./">Fixed top</a></li>
+    </ul>
 </div>
+</nav>
+<!--横幅标语模版-->
+<div class="jumbotron">
+    <h3>This is spring web!</h3>
+    <p>...</p>
+    <p>...</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+<!--标签 row行必须放在container内-->
+<div class="container">
+    <div class="row row-offcanvas row-offcanvas-right active">
+        <!--bs网格布局方式一个row标签，包含4个 col-md-3分布-->
+        <div id="mybutton" class="col-md-3">
+            <!--按钮绑定一个函数跳转页面实现;按钮绑定一个接口查询数据-->
+            <button type="button" onclick="jump()" class="btn btn-lg btn-info" data-complete-text="Loading finished" style="width: 120px;height: 40px" >接口验证</button>
+            <button type="button" class="btn btn-lg btn-primary" data-loading-text="Loading..." style="width:120px;height:40px">查询</button>
+        </div>
+        <div class="col-md-3">
+            <div class="alert alert-info">
+                <strong>Heads up!</strong>
+                <a href="http://localhost:8081/girl/req">点击跳转查看请求方法</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-align-left" ></span>
+            </button>
+            <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star" ></span> Star
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <!--<table id="test"></table>-->
+        <!--把接口添加到url直接可以查询显示在列表里 使用bootstrap table-->
+        <table data-toggle="table" data-url="http://127.0.0.1:8081/girl/girls">
+            <thead>
+            <tr>
+                <th data-field="id">Item ID</th>
+                <th data-field="api">Item Api</th>
+                <th data-field="age">Item Age</th>
+                <th data-field="money">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-4">.col-md-4</div>-->
+        <!--<div class="col-md-8">.col-md-8</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-4">.col-md-4</div>-->
+        <!--<div class="col-md-4">.col-md-4</div>-->
+        <!--<div class="col-md-4">.col-md-4</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-3">.col-md-3</div>-->
+        <!--<div class="col-md-6">.col-md-6</div>-->
+        <!--<div class="col-md-3">.col-md-3</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 </html>

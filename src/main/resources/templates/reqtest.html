@@ -3,25 +3,87 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Document</title>
-    <script type="text/javascript" src="script/jquery2.1.4.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/req.css"/>
 </head>
 <body>
+<script type="text/javascript" src="scripts/jquery2.1.4.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/querylist.js"></script>
+<!--上面导航栏需要class添加navbar navbar-inverse navbar-fixed-top等标签-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="http://localhost:8081/girl/page#">主页～</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">api test</a></li>
+            <li><a href="#">报告</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    下拉菜单
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">我是谁呢？</a></li>
+                    <li><a href="#">我也不知道</a></li>
+                    <li><a href="#">你是谁呢？</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">Nav item</a></li>
+                <li><a href="">Nav item again</a></li>
+                <li><a href="">One more nav</a></li>
+                <li><a href="">Another nav item</a></li>
+                <li><a href="">More navigation</a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">Nav item again</a></li>
+                <li><a href="">One more nav</a></li>
+                <li><a href="">Another nav item</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="page-header">Dashboard</h2>
+            <!--<div class="row placeholders">-->
+            <form name="input"  method="get">
+                <p>Get请求方法</p>
+                First url: <input type="text" name="url" id="url"/>
+                Last param: <input type="text" name="param"  id = "param"/>
+                <input id="submit" type="button" value="提交" />
+                <p>POST请求方法</p>
+                First url: <input type="text" name="url" id="urls"/>
+                Last param: <input type="text" name="param"  id = "params"/>
+                <input id="submits" type="button" value="提交" />
+            </form>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+        <script type="text/javascript" src="scripts/requestMethod.js"></script>
 
-<form name="input"  method="get">
-    <p>Get请求方法</p>
-    First url: <input type="text" name="url" id="url"/>
-    Last param: <input type="text" name="param"  id = "param"/>
-    <input id="submit" type="button" value="提交" />
-    <p>POST请求方法</p>
-    First url: <input type="text" name="url" id="urls"/>
-    Last param: <input type="text" name="param"  id = "params"/>
-    <input id="submits" type="button" value="提交" />
 
-</form>
-
-<script type="text/javascript" src="script/requestMethod.js"></script>
+        <ul id="show"></ul>
 
 
-<ul id="show"></ul>
+
+
 </body>
 </html>

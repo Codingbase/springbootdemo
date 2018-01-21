@@ -12,8 +12,18 @@ public class HelloControllerIndex {
     public String Hi() {
         return "index";
     }
-    @RequestMapping(value="/req",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/req", method = RequestMethod.GET)
     public String req() {
         return "reqtest";
+    }
+
+    @RequestMapping(value = "/local", method = RequestMethod.GET)
+    public String local() {
+        return "local";
+    }
+    @RequestMapping(value ="/aglist",method = RequestMethod.GET)
+    public String nglist() {
+        return "listpage";
     }
 }
