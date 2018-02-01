@@ -8,7 +8,7 @@ import javax.persistence.Id;
  * Entity实体类方法,生成数据库对应的表字段
  */
 
-//通过这种方法就可以创建一个表的势力,然后进行GET/POST方法的使用
+//通过这种方法就可以创建一个表的实例,然后进行GET/POST方法的使用
 @Entity
 public class Man {
     @Id

@@ -19,12 +19,12 @@ btn.click(function () {
         dataType: 'json',
         success: function (data) {
 //            对象转字符串
-            console.log(data);
+            console.log("data:"+data);
             var tt = JSON.stringify(data);
 //            字符串转json
-            var response = JSON.parse(tt);
-            console.log(response);
-            $("#show").append(tt);
+//             var response = JSON.parse(data);
+//             console.log(response);
+            $("#show").html(tt);
 //            打印json中的一个value
 //            console.log(data.mts);
 //            console.log(typeof data);
@@ -49,9 +49,9 @@ btns.click(function () {
             console.log(data);
             var tt = JSON.stringify(data);
 //            字符串转json
-             var response = JSON.parse(tt);
-             console.log(response);
-             $("#show").append(tt);
+//              var response = JSON.parse(tt);
+             console.log(data.valueOf());
+             $("#show").html(tt);
     });
 //     $.ajax({
 //         url: 'http://localhost:8081/girl/demo/test' + "?" + urls,

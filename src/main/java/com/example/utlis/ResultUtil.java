@@ -25,4 +25,5 @@ public class ResultUtil {
         result.setMsg(msg);
         return result;
     }
+
 }
